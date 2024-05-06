@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Models.DTOs;
 using WebApplication1.Repositories;
 
 namespace WebApplication1.Controllers;
@@ -24,8 +25,12 @@ public class WarehouseController : ControllerBase
         var product = await _warehouseRepository.GetProduct(id);
         return Ok(product);
     }
-    
-    
+
+    [HttpPost]
+    public async Task<IActionResult> AddProduct(ProductToAdd productToAdd)
+    {
+        return Created();
+    }
 
     
 }
